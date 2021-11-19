@@ -1,0 +1,30 @@
+
+<div class=" bg-light">
+    <%= form_with model: @post do |form| %>
+        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
+            <%= form.select(:admin_id, @admin.collect { |admin| [admin.email, admin.id]}, prompt: 'select') %>
+        </div>
+        <div class="input-group input-group-outline mb-5 w-80 mx-3">
+            <label >Nome</label>
+            <%= form.text_field :name, class: "form-control" %>
+        </div>
+        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
+            <label> Resumo </label>
+            <%= form.text_area :summary, class: "form-control p-3 mb-2", size: "30x5" %>
+        </div>
+
+        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
+            <label> Descrição </label>
+            <%= form.text_area :content, class: "form-control p-3 mb-2", size: "60x10" %>
+        </div>
+
+        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
+            <%= form.file_field :image %>
+        </div>
+
+        <div class="text-center">
+            <%= form.submit 'Salvar', class: "btn btn-outline-dark btn-lg w-100 mt-4 mb-0" %>
+            <%= link_to 'Cancelar', posts_path, class: "btn btn-outline-dark btn-lg w-100 mt-4 mb-0" %>
+        </div>
+    <% end %>
+</div>
