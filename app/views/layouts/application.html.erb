@@ -14,7 +14,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <title>
-      Material Dashboard 2 by Creative Tim
+      blog
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -27,20 +27,45 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
     <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
-    # <script href ="./assets/stylesheets/js/navbar.js"></script>
+    <script href ="./assets/stylesheets/js/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   </head>
+<div class="container bg-light border-radius-lg fixed-top border border-dark border-1 border-top-0 ">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom ">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use>
+          </svg>
+          <span class="fs-4 text-gradient-dark text-xl">MA CREM</span>
+        </a>
+            <%= link_to 'Home', root_path, class: "btn btn-outline-dark font-weight-bold" %>
+            <%= link_to 'Category', categories_path, class: "btn btn-outline-dark font-weight-bold" %>
+            <%= link_to 'Role', roles_path, class: "btn btn-outline-dark font-weight-bold" %>
+            <%= link_to 'Post', posts_path, class: "btn btn-outline-dark font-weight-bold" %>
 
-  <body class="g-sidenav-show  bg-gray-200">
+        <ul class="nav nav-pills text-gradient-dark text-xl">
+          
+        <div>
+          <% if admin_signed_in? %>
+            Logado como: <strong><%= current_admin.email %></strong>.
+
+            <%= link_to 'Editar perfil', edit_admin_registration_path, :class => 'btn btn-outline-dark navbar-link' %> |
+            <%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'btn btn-outline-dark navbar-link'  %>
+          <% else %>
+            <%= link_to "Registrar-se", new_admin_registration_path, :class => 'btn btn-outline-dark navbar-link'  %> |
+            <%= link_to "Login", new_admin_session_path, :class => 'btn btn-outline-dark navbar-link'  %>
+          <% end %>
+        </div>
+        </ul>
+    </header>
+  </div>
+  <body class="g-sidenav-show  bg-gray-200 mt-8" style= "background: #8360c3;  
+  background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);
+  background: linear-gradient(to right, #2ebf91, #8360c3);">
     <%= yield %>
   </body>
 </html>

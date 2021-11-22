@@ -4,6 +4,21 @@
         <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
             <%= form.select(:admin_id, @admin.collect { |admin| [admin.email, admin.id]}, prompt: 'select') %>
         </div>
+
+        <div class="input-group input-group-outline mb-3">
+            <p class="text-rose m-2 font-weight-bold">  Categorias : </p>
+            <label class="form-label"></label>
+            <ul>
+            <% @categories.each do |category| %>
+                <li>
+                    <%= check_box_tag 'category_ids[]', category.id, @post_cats.filter {|a| a.category_id == category.id}.present? -%>
+                    <%= h category.name -%>
+                    
+                </li>
+            <% end %>
+            </ul>
+        </div>
+
         <div class="input-group input-group-outline mb-5 w-80 mx-3">
             <label >Nome</label>
             <%= form.text_field :name, class: "form-control" %>
