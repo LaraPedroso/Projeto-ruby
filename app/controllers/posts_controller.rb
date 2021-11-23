@@ -7,17 +7,12 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
-        @admin = Admin.order(:email)
-        @post_cats = @post.post_cats.select(:category_id)
-        @categories = Category.order(:name)
-
-
-
+        get_Var
     end
 
     def create
         @post = Post.new(post_params)
-
+        get_Var
         if @post.save
             if params[:category_ids].present?
                 params[:category_ids].each do |id|
@@ -32,14 +27,14 @@ class PostsController < ApplicationController
 
     def edit
         @post = Post.find(params[:id])
-        @admin = Admin.order(:email)
-        @post_cats = @post.post_cats.select(:category_id)
-        @categories = Category.order(:name)
+        get_Var
+       
 
     end
 
     def update
         @post = Post.find(params[:id])
+        get_Var
 
         if @post.update(post_params)
             @post_cats_delete = PostCat.where(post_id: @post.id).where('category_id NOT IN (:category_ids)', category_ids: params[:category_ids])
@@ -72,6 +67,12 @@ class PostsController < ApplicationController
     end
 
     private
+    def get_Var
+        @admin = Admin.order(:email)
+        @post_cats = @post.post_cats.select(:category_id)
+        @categories = Category.order(:name)
+    end
+
     def post_params
         params.require(:post).permit(:name, :summary, :content, :admin_id, :image)
     end

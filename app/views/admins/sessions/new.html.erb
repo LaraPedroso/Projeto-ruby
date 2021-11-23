@@ -1,0 +1,42 @@
+
+<div class="container py-4 ">
+    <div class="row align-self-center">
+    <div class="col-4">
+        <div class="card my-4">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class=" shadow-dark border-radius-lg pt-4 pb-3 border border-dark border-1">
+            <div class="container ">
+            <h2 class="text-dark ps-3 text-monospace ">Entrar</h2>
+            </div>
+          </div>
+      <div class="mt-2 p-5">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :Email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :Senha %><br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :Lembrar %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "Entrar", class: "btn btn-outline-dark" %>
+        </div>
+      <% end %>
+
+      <%= render "admins/shared/links" %>
+    </div>
+    </div>
+
+    </div>
+  </div>
+</div>
