@@ -65,6 +65,16 @@
   <body class="g-sidenav-show  bg-gray-200 mt-8" style= "background: #8360c3;  
   background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);
   background: linear-gradient(to right, #2ebf91, #8360c3);">
+
+  <div class="mt-7 container">
+      <% if notice %>
+        <p class="alert alert-success text-white"><%= notice %></p>
+      <% end %>
+
+      <% if alert %>
+        <p class="alert alert-danger text-white"><%= alert %></p>
+      <% end %>
+    </div>
+
     <%= yield %>
-  </body>
 </html>

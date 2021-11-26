@@ -9,17 +9,17 @@
 
   <div class="field">
     <%= f.label :Email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :required => true%>
   </div>
 
   <div class="field">
     <%= f.label :Senha %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", :required => true%>
   </div>
 
   <div class="field">
     <%= f.label :Confirmar_senha %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", :required => true %>
   </div>
 
   <div class="actions mt-5">

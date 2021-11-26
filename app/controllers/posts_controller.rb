@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-
+    before_action :authenticate_admin!
+    load_and_authorize_resource
     def index
         @posts = Post.order(:name)
         @admin = Admin.order(:email)
@@ -7,12 +8,13 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
-        get_Var
+        get_var
     end
 
     def create
         @post = Post.new(post_params)
-        get_Var
+        get_var
+        @post.admin_id = current_admin.id
         if @post.save
             if params[:category_ids].present?
                 params[:category_ids].each do |id|
@@ -27,14 +29,13 @@ class PostsController < ApplicationController
 
     def edit
         @post = Post.find(params[:id])
-        get_Var
-       
+        get_var
 
     end
 
     def update
         @post = Post.find(params[:id])
-        get_Var
+        get_var
 
         if @post.update(post_params)
             @post_cats_delete = PostCat.where(post_id: @post.id).where('category_id NOT IN (:category_ids)', category_ids: params[:category_ids])
@@ -67,7 +68,7 @@ class PostsController < ApplicationController
     end
 
     private
-    def get_Var
+    def get_var
         @admin = Admin.order(:email)
         @post_cats = @post.post_cats.select(:category_id)
         @categories = Category.order(:name)

@@ -19,8 +19,9 @@
                             <thead>
                             <tr>
                                 <th class="text-uppercase text-secondary text-monospace opacity-7">Nome</th>
+                                <th class="text-secondary opacity-5"></th>
+                                
                                 <th class="text-uppercase text-secondary text-monospace opacity-7">Imagem</th>
-                                <th class="text-secondary opacity-7"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -31,6 +32,9 @@
                                 </td>
                                 <td>
                                     <%= image_tag post.image.variant(resize_to_limit: [100, 100]) %>
+                                </td>
+                                <td>
+                                    <%= post.admin.email %>
                                 </td>
                                 <td class="align-middle">
                                 <%= link_to 'Editar', edit_post_path(id: post.id), class: "btn btn-sm text-secondary font-weight-bold" %>
