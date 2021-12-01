@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
     before_action :authenticate_admin!
     load_and_authorize_resource
+    layout 'admin'
     def index
         @posts = Post.order(:name)
         @admin = Admin.order(:email)
@@ -10,7 +11,7 @@ class PostsController < ApplicationController
         @post = Post.new
         get_var
     end
-
+    
     def create
         @post = Post.new(post_params)
         get_var

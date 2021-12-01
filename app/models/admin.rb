@@ -5,9 +5,11 @@ devise  :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
     has_many :posts
     belongs_to :role
+    has_one :ability
 
 
-  def valid?
-    role_id == 1
-  end
+    def adminn?
+      role_id == 1
+    end
+
 end

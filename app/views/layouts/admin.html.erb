@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ma Crem</title>
+  
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <!-- Nucleo Icons -->
+    <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <!-- CSS Files -->
+    
+    <%# <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> %>
+
+  </head>
+
+  <body class="g-sidenav-show  bg-gray-200">
+    <aside style="height: 100%;">
+      <aside class="sidenav navbar navbar-vertical fonts-L navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-light bg-white" id="sidenav-main">
+        <div class="sidenav-header">
+          <a class="navbar-brand m-0">
+            <span class="ms-1 font-weight-bold text-dark">Blog</span>
+          </a>
+        </div>
+        <hr class="horizontal light mt-0 mb-2">
+        <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-dark " href="/">
+                <span class="nav-link-text ms-1">Home</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark <%= controller_name == 'categories' ? 'active bg-gradient-dark' : '' %>  " href="/categories">
+                <span class="nav-link-text ms-1">Categorias</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark <%= controller_name == 'roles' ? 'active bg-gradient-dark' : '' %>  " href="/roles">
+                <span class="nav-link-text ms-1">Roles</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark <%= controller_name == 'posts' ? 'active bg-gradient-dark' : '' %>  " href="/posts">
+                <span class="nav-link-text ms-1">Posts</span>
+              </a>
+            </li>
+            <li class="nav-item container">
+            <hr>
+              <div class="text-dark">
+                Logado: <strong><%= current_admin.email %></strong>.
+              </div>
+              <li class="nav-item container">
+                  <%= link_to 'Editar perfil', edit_admin_registration_path, :class => 'text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2 navbar-link' %>
+              </li>
+                <li class="nav-item container">
+                  <%= link_to "Sair", destroy_admin_session_path, method: :delete, :class => 'text-dark btn btn btn-outline-dark text-xs m-2 navbar-link'  %>
+              </li>
+            </li>
+          </ul>
+        </div>
+    </aside>
+      <div class="mt-7 container">
+          <% if notice %>
+            <p class="alert alert-success text-white"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger text-white"><%= alert %></p>
+          <% end %>
+      </div>
+    <%= yield %>
+  </body>
+ </html>

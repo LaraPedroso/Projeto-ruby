@@ -1,53 +1,60 @@
-  
-  <div class="container">
-      <div class="card my-4 col-4 align-self-center">
-          <div class="card-header  position-relative mt-n4 mx-3 z-index-2 border border-dark border-1 mt-5">
-            <h2>Editar  <%= resource_name.to_s.humanize %></h2>
-          </div>
-
-          <div class= "mt-5 container">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-            <%= render "admins/shared/error_messages", resource: resource %>
-
-            <div class="field">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <main class="main-content mt-3">
+    <section>
+      <div class="page-header min-vh-100">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+              <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center" style="background-image: url('../assets/img/illustrations/illustration-signup.jpg'); background-size: cover;">
+              </div>
             </div>
+            <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+              <div class="card card-plain">
+                <div class="card-header">
+                  <h4 class="font-weight-bolder">Editar</h4>
+                </div>
+                <div class="card-body">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= render "admins/shared/error_messages", resource: resource %>
 
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>Atualmente aguardando confirmação para: <%= resource.unconfirmed_email %></div>
-            <% end %>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <%= f.email_field :email,class:"form-control", autofocus: true, autocomplete: "email", :required => true%>
+                    </div>
 
-            <div class="field">
-              <%= f.label :senha %><br />
-              <%= f.password_field :password, autocomplete: "new-password" %>
-              <% if @minimum_password_length %>
-                <br />
-              <% end %>
+                      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                        <div>Atualmente aguardando confirmação para: <%= resource.unconfirmed_email %></div>
+                      <% end %>
+
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label">Senha</label>
+                      <%= f.password_field :password,class:"form-control", autocomplete: "new-password", :required => true%>
+                    </div>
+                     <div class="input-group input-group-outline mb-3">
+                      <label class="form-label">Confirmar senha</label>
+                      <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password", :required => true %>
+                    </div>
+
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label">Senha atual</label>
+                      <%= f.password_field :current_password,class:"form-control", autocomplete: "current-password" %>
+                    </div>
+                  
+                    <div class="actions mt-5">
+                      <%= f.submit "Atualizar",  class: "btn btn-outline-dark"%>
+                    </div>
+                </div>
+
+                <div class="btn btn-outline-dark mt-4 m-3">
+                  <%= link_to "Voltar", :back %>
+                </div>
+                <% end %>
+                <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete %>
+              </div>
             </div>
-
-            <div class="field">
-              <%= f.label :Confirmar_senha %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-            </div>
-
-            <div class="field">
-              <%= f.label :Senha_atual %><br />
-              <%= f.password_field :current_password, autocomplete: "current-password" %>
-            </div>
-
-            <div class="actions">
-              <%= f.submit "Atualizar", class: "btn btn-outline-dark mt-4" %>
-            </div>
-          <% end %>
-
-          <h3>Cancelar minha conta</h3>
-
-          <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete %>
-
-          <div class="btn btn-outline-dark mt-4 m-3">
-            <%= link_to "Voltar", :back %>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
+
+  

@@ -31,10 +31,6 @@
                     <td class="align-middle">
                         <%= link_to 'Editar' , edit_role_path(id: role.id), class: "btn btn-outline-dark" %>
 
-                        <%= link_to 'Deletar', role_path(id: role.id), method: 
-                                :delete, 
-                                data: { confirm: "Tem certeza?" }, 
-                                class: "btn btn-outline-dark" %>
                     </td>
                     </tr>
                 <% end %>
