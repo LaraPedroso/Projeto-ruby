@@ -6,5 +6,6 @@ class HomeController < ApplicationController
 
     def post
         @post = Post.find(params[:id])
+        @comment = Comment
     end
 end

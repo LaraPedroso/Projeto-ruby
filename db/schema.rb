@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_30_195921) do
+ActiveRecord::Schema.define(version: 2021_12_02_192015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(version: 2021_11_30_195921) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "admin_id", null: false
+    t.text "content", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_comments_on_admin_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
   create_table "post_cats", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "category_id", null: false
@@ -84,6 +94,14 @@ ActiveRecord::Schema.define(version: 2021_11_30_195921) do
     t.index ["admin_id"], name: "index_posts_on_admin_id"
   end
 
+  create_table "readers", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "username"
     t.datetime "created_at", precision: 6, null: false
@@ -93,6 +111,8 @@ ActiveRecord::Schema.define(version: 2021_11_30_195921) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "admins", "roles"
+  add_foreign_key "comments", "admins"
+  add_foreign_key "comments", "posts"
   add_foreign_key "post_cats", "categories"
   add_foreign_key "post_cats", "posts"
   add_foreign_key "posts", "admins"
