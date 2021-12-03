@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
-        get_var
+        get_var 
     end
     
     def create

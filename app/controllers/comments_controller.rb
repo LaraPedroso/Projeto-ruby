@@ -1,32 +1,24 @@
-class PostsController < ApplicationController
-    before_action :authenticate_admin!
+class CommentsController < ApplicationController
     load_and_authorize_resource
     layout 'admin'
+
     def index
-        @comments = Comment.order(:name)
+        @comments = Comment.all
     end
 
     def new
-        get_var
         @comment = Comment.new
     end
     
     def create
-        get_var
         @comment = Comment.new(comment_params)
-        @comment.admin_id = current_admin.id # colocando o id do usuario atual, no campo admin_id do comment
-        
-    end
-
-    def edit
-        get_var
-        @comment = Comment.find(params[:id])
-
-    end
-
-    def update
-        get_var
-        @comment = Comment.find(params[:id])
+        @comment.admin_id = current_admin.id
+        @comment.post_id = '1'
+        if @comment.save
+            puts "OOOOO"
+        else
+            puts "dkasdas"
+        end
     end
 
     def destroy
@@ -42,11 +34,11 @@ class PostsController < ApplicationController
 
     def get_var
         @admin = Admin
-        @post = Post.find (params[:id])
+
     end
 
-    def post_params
-        params.require(:post).permit(:content)
+    def comment_params
+        params.require(:comment).permit(:content, :post_id, :admin_id)
     end
 
 end

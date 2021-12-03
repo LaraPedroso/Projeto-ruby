@@ -16,39 +16,35 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
-    <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
-    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> %>
   </head>
 
 <body class="g-sidenav-show  bg-gray-200">
-<nav class="bg-gradient-light navbar fixed-top fonts-L navbar-expand-lg shadow-none" id="navbarBlur" navbar-scroll="true">
-          <div class="container-fluid nav nav-tabs-responsive">
-          <!-- LEFT SIDE -->
-            <%= link_to 'Home', root_path, class: "text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2" %>
-            
-            <% if admin_signed_in? %>
-                <%= link_to 'Admin', categories_path, class: "text-dark btn btn btn-outline-dark text-xs m-2" %>
-            <% end %>
-                <ul class="ms-md-auto navbar-nav  justify-content-end">
-                  <li class="nav-item d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-dark font-weight-bold px-0" href="/perfil">
-                      <div>
-                          <% if admin_signed_in? %>
-                            Logado como: <strong><%= current_admin.email %></strong>.
-                            <%= link_to 'Editar perfil', edit_admin_registration_path, :class => 'text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2 navbar-link' %> |
-                            <%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'text-dark btn btn btn-outline-dark text-xs m-2 navbar-link'  %>
-                          <% else %>
-                            <%= link_to "Registrar-se", new_admin_registration_path, :class => 'text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2 navbar-link'  %> |
-                            <%= link_to "Login", new_admin_session_path, :class => 'text-dark btn btn btn-outline-dark text-xs m-2 navbar-link'  %>
-                          <% end %>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-            </div>
-          </div>
-        </nav>
+  <nav class="bg-gradient-light navbar fixed-top fonts-L navbar-expand-lg shadow-none" id="navbarBlur" navbar-scroll="true">
+    <div class="container-fluid nav nav-tabs-responsive">
+      <%= link_to 'Home', root_path, class: "text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2" %>
+        <% if admin_signed_in? %>
+            <%= link_to 'Admin', categories_path, class: "text-dark btn btn btn-outline-dark text-xs m-2" %>
+        <% end %>
+          <ul class="ms-md-auto navbar-nav  justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-dark font-weight-bold px-0" href="/perfil">
+                <div>
+                    <% if admin_signed_in? %>
+                      Logado como: <strong><%= current_admin.email %></strong>.
+                      <%= link_to 'Editar perfil', edit_admin_registration_path, :class => 'text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2 navbar-link' %> |
+                      <%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'text-dark btn btn btn-outline-dark text-xs m-2 navbar-link'  %>
+                    <% else %>
+                      <%= link_to "Registrar-se", new_admin_registration_path, :class => 'text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2 navbar-link'  %> |
+                      <%= link_to "Login", new_admin_session_path, :class => 'text-dark btn btn btn-outline-dark text-xs m-2 navbar-link'  %>
+                    <% end %>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </nav>
 
   <div class="mt-7 container">
       <% if notice %>
@@ -61,4 +57,4 @@
     </div>
     <%= yield %>
   </body>
- </html>
+</html>
