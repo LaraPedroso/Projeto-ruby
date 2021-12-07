@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     def index
         @posts = Post.order(:name)
         @admin = Admin.order(:email)
+        
     end
 
     def new

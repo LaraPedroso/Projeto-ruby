@@ -1,0 +1,12 @@
+<% comments.each do |comment| %>
+    <%# if @post.id == comment.post_id %>
+        <tr class="container">
+        <td>
+            <p class="font-weight-bold mb-0"><%= comment.content %></p>
+        </td>
+        <td>
+            <p class="font-weight-bold mb-0"><%= comment.created_at.strftime("%H:%M") %></p>
+        </td>
+        </tr>
+    <%# end %>
+<% end %>

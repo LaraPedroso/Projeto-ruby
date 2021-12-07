@@ -1,5 +1,5 @@
-<div class="container mt-7">
-    <div class="card fill mb-8 z-index-2 bg-gradient-light">
+<div class="container mt-10">
+    <div class="card fill mb-10 z-index-2 bg-gradient-light">
         <div class="card-header shadow-primary border-radius-lg page-header p-0 position-relative mt-n4 mx-7 z-index-2 bg-transparent" style="width:1010px; height:400px;">
             <%= image_tag @post.image.variant(saver: { quality: 10 }, resize_to_fill: [1010, 400]) %>
         </div>
@@ -11,33 +11,26 @@
                 <p class="card-text" style="font-size: 15px;"><%= @post.content %>.</p>
             </div>
         </div>
-            <table class="table bg-gradient-light border-radius-lg align-items-center mb-8">
-                <% if admin_signed_in?%>
-                    <thead>
-                        <%= form_with model: @comment do |form| %>
-                            <tr>
-                                <th class="text-uppercase text-secondary font-weight-bolder opacity-7">
-                                    <%= form.text_area :content, maxlength: 255, class: "bg-light form-control"%>
-                                    <%= form.submit 'Salvar', class: "btn btn-lg bg-gradient-primary btn-lg mt-4 mb-0" %>
-                                    <%= form.hidden_field :post_id, :value => @post.id %>
-                                </th>
-                            </tr>
-                        <% end %>
-                    </thead>
-                <% end %>
-                <tbody>
-                    <% @comments.each do |comment| %>
-                        <tr class="container">
-                        <td>
-                            <p class="font-weight-bold mb-0"><%= comment.content %></p>
-                        </td>
-                        <td>
-                            <p class="font-weight-bold mb-0"><%= comment.created_at %></p>
-                        </td>
-                        </tr>
+            <div>
+                <table class="table bg-gradient-light border-radius-lg align-items-center mb-8">
+                    <% if can? :create, Comment%>
+                        <thead>
+                            <%= form_with model: @comment, local: false do |form| %>
+                                <tr>
+                                    <th class="text-uppercase text-secondary font-weight-bolder opacity-7">
+                                        <%= form.text_area :content, maxlength: 255, class: "bg-light form-control"%>
+                                        <%= form.submit 'Enviar', class: "btn btn-lg bg-gradient-dark btn-lg mt-4 mb-0" %>
+                                        <%= form.hidden_field :post_id, :value => @post.id %>
+                                    </th>
+                                </tr>
+                            <% end %>
+                        </thead>
                     <% end %>
-                </tbody>
-            </table>
+                    <tbody  id='comment-list' >
+                        <%= render "comments", comments: @comments %>
+                    </tbody>
+                </table>
+            </div>
             <div>
                 <%= link_to 'Voltar', root_path, class: "btn btn-outline-dark font-weight-bold" %>
             </div>
