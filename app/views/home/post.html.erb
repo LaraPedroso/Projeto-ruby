@@ -10,28 +10,28 @@
             <div class="container px-8 mb-7">
                 <p class="card-text" style="font-size: 15px;"><%= @post.content %>.</p>
             </div>
-        </div>
-            <div>
-                <table class="table bg-gradient-light border-radius-lg align-items-center mb-8">
-                    <% if can? :create, Comment%>
-                        <thead>
-                            <%= form_with model: @comment, local: false do |form| %>
-                                <tr>
-                                    <th class="text-uppercase text-secondary font-weight-bolder opacity-7">
-                                        <%= form.text_area :content, maxlength: 255, class: "bg-light form-control"%>
-                                        <%= form.submit 'Enviar', class: "btn btn-lg bg-gradient-dark btn-lg mt-4 mb-0" %>
-                                        <%= form.hidden_field :post_id, :value => @post.id %>
-                                    </th>
-                                </tr>
-                            <% end %>
-                        </thead>
-                    <% end %>
-                    <tbody  id='comment-list' >
-                        <%= render "comments", comments: @comments %>
-                    </tbody>
-                </table>
             </div>
-            <div>
+                    <div>
+                        <table class="table bg-gradient-light border-radius-lg align-items-center mb-8">
+                            <% if can? :create, Comment%>
+                                <thead>
+                                <%= form_with model: @comment, local: false, :html => {:id =>'comment-form' } do |form| %>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary font-weight-bolder opacity-7">
+                                            <%= form.text_area :content, maxlength: 255, class: "bg-light"%>
+                                            <%= form.submit 'Enviar', class: "btn btn-lg bg-gradient-dark btn-lg mt-4 mb-0" %>
+                                            <%= form.hidden_field :post_id, :value => @post.id %>
+                                        </th>
+                                    </tr>
+                                <% end %>
+                                </thead>
+                            <% end %>
+                        <tbody  id='comment-list' >
+                            <%= render "comments", comments: @comments %>
+                        </tbody>
+                        </table>
+                    </div>
+                <div>
                 <%= link_to 'Voltar', root_path, class: "btn btn-outline-dark font-weight-bold" %>
             </div>
         </div>

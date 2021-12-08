@@ -6,6 +6,7 @@ devise  :database_authenticatable, :registerable,
     has_many :posts
     belongs_to :role
     has_one :ability
+    has_many :comments
 
 
     def adminn?
