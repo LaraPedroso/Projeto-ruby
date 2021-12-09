@@ -8,8 +8,8 @@ class HomeController < ApplicationController
         @post = Post.find(params[:id])
         @admin = Admin.find(params[:id])
         @comment = Comment.new
-        @comments = Comment.where(post_id: @post.id)
         @comment_son = Comment.new
+        @comments = Comment.where(post_id: @post.id).where(comment_id: nil).order(created_at: :desc)
 
     end
 end

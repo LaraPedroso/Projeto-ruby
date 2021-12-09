@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :roles
   resources :posts
   resources :comments
+  resources :admins
 
   get '/post/:id', to: 'home#post', as: 'home_post'
 end

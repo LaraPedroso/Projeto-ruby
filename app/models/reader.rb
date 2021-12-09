@@ -1,2 +1,0 @@
-class Reader < ApplicationRecord
-end

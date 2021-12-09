@@ -1,7 +1,9 @@
 <% comments.each do |comment| %>
-        <tr class="container">
+<div class="container">
+    <table class="table text-white bg-gradient-dark border-radius-lg mt-5 align-items-center fonts-L">
+        <tr>
             <td>
-                <p class="font-weight-bold mb-0"><%= comment.admin_id %></p>
+                <p class="font-weight-bold mb-0"><%= comment.admin.email %></p>
             </td>
             <td>
                 <p class="font-weight-bold mb-0"><%= comment.content %></p>
@@ -10,25 +12,40 @@
                 <p class="font-weight-bold mb-0"><%= comment.created_at.strftime("%H:%M") %></p>
             </td>
         </tr>
-        <div>
+    </table>
+</div>
+        <div class="container">
+            <table class="table bg-gradient-light border-radius-lg align-items-center fonts-L">
+            <tbody id="comment-list">
+                <% comment.comments.each do |son|%>
+                    <tr>
+                        <td>
+                            <%= son.admin.email %>
+                        </td>
+                        <td>
+                            <%= son.content %>
+                        </td>
+                    </tr>   
+                <% end %>
+            </tbody>
+        </table>
             <% if can? :create, Comment %>
-                <td>
+                <div>
                     <%= form_with model: @comment_son, local: false, :html => {:id =>'' } do |form| %>
-                        <div class="bg-gradient-light border-radius-lg">
-                            <td class="text-uppercase text-secondary font-weight-bolder opacity-7">
+                        <div class="bg-gradient-light border-radius-lg fonts-L">
+                            <div class="text-dark font-weight-bolder opacity-7 form-control">
                                 <%= form.text_area :content, maxlength: 255, class: "bg-light form-control"%>
                                 <%= form.hidden_field :post_id, :value => comment.post_id %>
                                 <%= form.hidden_field :comment_id, :value => comment.id %>
-                            </td>
-                            <td class="text-uppercase text-secondary font-weight-bolder opacity-7">
-                                <%= form.submit 'Enviar', class: "btn btn-lg bg-gradient-dark btn-lg mt-4 mb-0" %>
-                            </td>
+                            </div>
+                            <div>
+                                <%= form.submit 'Responder', class: "btn btn-lg bg-gradient-dark fonts-L mt-4 mb-0" %>
+                            </div>
                         </div>
                     <% end %>
-                </td>
+                </div>
+                <hr>
             <% end %>
-
-
         </div>
 <% end %>
 

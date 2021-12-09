@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
 
     def create
         @comment = Comment.new(comment_params)
+        @comment_son = Comment.new
         get_params
         @comment.admin_id = current_admin.id
 
@@ -22,7 +23,7 @@ class CommentsController < ApplicationController
         if @comment.save
             respond_to do |format|
                 format.js
-                @comments = Comment.where(post_id: @comment.post_id).order(:created_at)
+                @comments = Comment.where(post_id: @comment.post_id).where(comment_id: nil).order(created_at: :desc)
             end
         else
             render :new, status: :unprocessable_entity

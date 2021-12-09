@@ -1,0 +1,22 @@
+
+<div class=" bg-light">
+    <%= form_with model: @admin do |form| %>
+        <div class="input-group input-group-outline mb-3">
+            <p class="text-rose m-2 font-weight-bold"> User: </p>
+            <label class="form-label"></label>
+        </div>
+        <div class="input-group input-group-outline mb-5 w-80 mx-3">
+            <label>Email</label>
+            <%= form.text_field :email, maxlength:15, class: "form-control", :required => true%>
+        </div>
+        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
+            <label> Senha </label>
+            <%= form.text_area :password, maxlength: 50, class: "form-control p-3 mb-2" %>
+        </div>
+
+        <div class="text-center">
+            <%= form.submit 'Salvar', class: "btn btn-outline-dark btn-lg w-100 mt-4 mb-0" %>
+            <%= link_to 'Cancelar', admin_path, class: "btn btn-outline-dark btn-lg w-100 mt-4 mb-0" %>
+        </div>
+    <% end %>
+</div>
