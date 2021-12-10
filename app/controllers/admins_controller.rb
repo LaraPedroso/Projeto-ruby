@@ -5,9 +5,10 @@ class AdminsController < ApplicationController
     def index
         @admin = Admin.all
     end
-
-    def edit
-        @admin = Admin.find(params[:id])
+    
+    def new
+        @admin = Admin.new
+        
     end
 
     def create
@@ -19,6 +20,11 @@ class AdminsController < ApplicationController
             render :new, status: :unprocessable_entity
         end
     end
+
+    def edit
+        @admin = Admin.find(params[:id])
+    end
+    
 
     def update
         @admin = Admin.find(params[:id])
@@ -40,7 +46,7 @@ class AdminsController < ApplicationController
     end
 
     def admin_params
-        params.require(:admin).permit(:email, :password)
+        params.require(:admin).permit(:email, :password, :role_id)
     end
 
 end

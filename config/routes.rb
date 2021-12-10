@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :admins
 
   get '/post/:id', to: 'home#post', as: 'home_post'
+  post '/create/admin', to: 'admins#create', as: 'admin_create'
 end

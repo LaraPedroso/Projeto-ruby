@@ -1,22 +1,31 @@
 
-<div class=" bg-light">
+<div class=" bg-light mt-5">
     <%= form_with model: @admin do |form| %>
-        <div class="input-group input-group-outline mb-3">
-            <p class="text-rose m-2 font-weight-bold"> User: </p>
-            <label class="form-label"></label>
-        </div>
         <div class="input-group input-group-outline mb-5 w-80 mx-3">
-            <label>Email</label>
-            <%= form.text_field :email, maxlength:15, class: "form-control", :required => true%>
-        </div>
-        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
-            <label> Senha </label>
-            <%= form.text_area :password, maxlength: 50, class: "form-control p-3 mb-2" %>
+            <%= form.text_field :email, class: "form-control", placeholder: 'Email', :required => true%>
         </div>
 
-        <div class="text-center">
-            <%= form.submit 'Salvar', class: "btn btn-outline-dark btn-lg w-100 mt-4 mb-0" %>
-            <%= link_to 'Cancelar', admin_path, class: "btn btn-outline-dark btn-lg w-100 mt-4 mb-0" %>
+        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
+            <%= form.password_field :password, maxlength: 15, placeholder: 'Senha',disabled: true, class: "form-control p-3 mb-2" %>
+        </div>
+
+        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
+            <%= form.password_field :password_confirmation, placeholder: 'Confirmar senha', disabled: true, class: "form-control p-3 mb-2" %>  
+        </div>
+
+        <div class="bg-light mb-3">
+            <input type="checkbox" id="pass" name="pass">
+            <label for="pass">alterar senha?</label>
+        </div>
+        <div class="input-group input-group-outline mb-3 form-control">
+            <%= form.select :role_id, options_for_select([
+            ['Admin', 1], 
+            ['Comentarista', 2], 
+            ['Leitor', 3]], @admin.role_id) %>
+        </div>
+        <div class="container">
+            <%= form.submit 'Salvar', class: "fonts-L btn btn-outline-dark font-weight-bold mt-5 mb-4" %>
+            <%= link_to 'Voltar', admins_path, class: "fonts-L btn btn-outline-dark font-weight-bold mt-5 mb-4" %>
         </div>
     <% end %>
 </div>

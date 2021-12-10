@@ -2,14 +2,28 @@
     <div class="row">
         <div class="col-12">
             <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class=" shadow-dark border-radius-lg pt-4 pb-3 border border-dark border-2">
+                    <div class="container">
+                    <h2 class="text-dark ps-3 fonts-L ">Usuarios</h2>
+                    <%= link_to new_admin_path, class: "btn btn-outline-dark" do %>
+                        novo
+                        <i class="fas fa-plus"></i>
+                    <% end %>
+                    </div>
+                    </div>
+                </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
                             <tbody>
                         <% @admin.each do |admin| %>
-                            <tr class="container">
+                            <tr class="container fonts-L">
                                 <td>
                                     <%= admin.email %>
+                                </td>
+                                <td>
+                                    <%= admin.role.username %>
                                 </td>
                                 <td class="align-middle">
                                 <%= link_to 'Editar', edit_admin_path(id: admin.id), class: "btn btn-sm text-secondary font-weight-bold" %>

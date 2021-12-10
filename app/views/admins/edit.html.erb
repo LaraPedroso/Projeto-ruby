@@ -1,9 +1,21 @@
 <div>
     <div class="container">
-        <div class="card-header">
+        <div class="card-header bg-gradient-dark">
             <h4 class="font-weight-bolder"></h4>
-            <p class="mb-0">Editando email --<%= @admin.email %> </p>
+            <p class="mb-0 fonts-L text-white">Editando email --<%= @admin.email %> </p>
         </div>
         <%= render partial: 'form' %>
     </div>
 </div>
+<script>
+    $( "#pass" ).click(function() {
+        if ($('#pass').is(":checked") == true) {
+            $('#admin_password').attr("disabled", false);
+            $('#admin_password_confirmation').attr("disabled", false);
+        }
+        else { 
+            $('#admin_password').attr("disabled", 'disabled');
+            $('#admin_password_confirmation').attr("disabled", 'disabled');
+        }
+    })
+</script>

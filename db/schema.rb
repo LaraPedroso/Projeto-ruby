@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_172947) do
+ActiveRecord::Schema.define(version: 2021_12_10_182145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,12 +96,14 @@ ActiveRecord::Schema.define(version: 2021_12_07_172947) do
     t.index ["admin_id"], name: "index_posts_on_admin_id"
   end
 
-  create_table "readers", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password"
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "admin_id", null: false
+    t.integer "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_ratings_on_admin_id"
+    t.index ["post_id"], name: "index_ratings_on_post_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -119,4 +121,6 @@ ActiveRecord::Schema.define(version: 2021_12_07_172947) do
   add_foreign_key "post_cats", "categories"
   add_foreign_key "post_cats", "posts"
   add_foreign_key "posts", "admins"
+  add_foreign_key "ratings", "admins"
+  add_foreign_key "ratings", "posts"
 end
