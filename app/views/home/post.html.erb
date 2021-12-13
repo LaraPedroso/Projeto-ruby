@@ -18,7 +18,7 @@
                             <%= form_with model: @comment, local: false, :html => {:id =>'comment-form' } do |form| %>
                                 <tr>
                                     <th class="text-dark font-weight-bolder form-control">
-                                        <%= form.text_area :content, maxlength: 255, class: "bg-light form-control"%>
+                                        <%= form.text_area :content, maxlength: 255, class: "bg-light form-control p-2", placeholder: "Escreva seu Comentario..."%>
                                         <%= form.submit 'Enviar', class: "fonts-L btn btn-lg bg-gradient-dark btn-lg mt-4" %>
                                         <%= form.hidden_field :post_id, :value => @post.id %>
                                     </th>
@@ -27,11 +27,13 @@
                             </thead>
                         <% end %>
                     </table>
+                    <% if admin_signed_in?%>
+                        <%= render partial: 'rate', rating: @ratings %>
+                    <% end %>
                     <div  id='comment-list' >
                         <%= render "comments", comments: @comments %>
                     </div>
-                </div>
-                    
+                </div>  
             <div class="container">
                 <%= link_to 'Voltar', root_path, class: " fonts-L btn btn-outline-dark font-weight-bold mt-5 mb-4" %>
             </div>

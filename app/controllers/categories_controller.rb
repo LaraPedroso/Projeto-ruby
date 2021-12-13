@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
         @category = Category.find(params[:id])
         
         if @category.present?
-           @category.destroy 
+          @category.destroy 
         end
         redirect_to categories_path
     end

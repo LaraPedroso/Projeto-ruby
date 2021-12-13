@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :comments
   resources :admins
+  resources :ratings
 
   get '/post/:id', to: 'home#post', as: 'home_post'
   post '/create/admin', to: 'admins#create', as: 'admin_create'

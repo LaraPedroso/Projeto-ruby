@@ -1,0 +1,57 @@
+<div class="container">
+    <h3 class="text-dark my-3 fonts-L">AVALIAÇÃO
+            <i class="fas fa-star fa-1x mt-3" style="color: #FFFF00;"></i>
+    </h3>
+    <%= form_with model: @ratings do |f| %>
+        <% (1..5).each do |rating| %>
+        <%= f.label :rate, for:"rating_rate_#{rating.to_i}" do %>
+            <i id="<%= rating%>" class="fas fa-star fa-2x mt-3"></i>
+        <% end %>
+
+        <%= f.radio_button "rate", rating.to_i, style:'display:none;'%>
+        <% end %>
+
+        <%= f.hidden_field :post_id, value: @post.id %>
+        <%= f.submit'Avaliar', class: "btn btn-lg bg-gradient-dark fonts-L mt-2 mb-0 m-4"%> 
+    <% end %>
+    <%=  number_with_precision(@average, precision: 1) %>
+</div>
+
+        
+<script>
+    $('#1').click(function(){
+        $('#1').css("color", "yellow");
+        $('#2').css("color", "gray");
+        $('#3').css("color", "gray");
+        $('#4').css("color", "gray");
+        $('#5').css("color", "gray");   
+    })
+    $('#2').click(function(){
+        $('#1').css("color", "yellow");
+        $('#2').css("color", "yellow");
+        $('#3').css("color", "gray");
+        $('#4').css("color", "gray");
+        $('#5').css("color", "gray");
+    })
+    $('#3').click(function(){
+        $('#1').css("color", "yellow");
+        $('#2').css("color", "yellow");
+        $('#3').css("color", "yellow");
+        $('#4').css("color", "gray");
+        $('#5').css("color", "gray");
+    })
+    $('#4').click(function(){
+        $('#1').css("color", "yellow");
+        $('#2').css("color", "yellow");
+        $('#3').css("color", "yellow");
+        $('#4').css("color", "yellow");
+        $('#5').css("color", "gray");
+    })
+    $('#5').click(function(){
+        $('#1').css("color", "yellow");
+        $('#2').css("color", "yellow");
+        $('#3').css("color", "yellow");
+        $('#4').css("color", "yellow");
+        $('#5').css("color", "yellow");
+    })
+    </script>
