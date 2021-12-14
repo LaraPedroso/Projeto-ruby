@@ -13,7 +13,7 @@ class RatingsController < ApplicationController
             @rating.admin_id = current_admin.id
             @rating.save
         end
-            
+        @average = Rating.where(post_id: @rating.post_id).average("rate")
     end
 
     def edit
@@ -26,6 +26,15 @@ class RatingsController < ApplicationController
         if @rating.update(rating_params)
 
         end
+    end
+
+    def destroy
+        @rating = Rating.find(params[:id])
+        
+        if @rating.present?
+            @rating.destroy 
+        end
+        redirect_to ratings_path
     end
 
     private

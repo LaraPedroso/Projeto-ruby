@@ -3,8 +3,12 @@ class PostsController < ApplicationController
     load_and_authorize_resource
     layout 'admin'
     def index
-        @posts = Post.order(:name)
+        @posts = Post.select('posts.id, posts.name, AVG(ratings.rate) as media')
+                    .joins("LEFT JOIN ratings ON ratings.post_id = posts.id")
+                    .group("posts.id")
+                    .order(created_at: :desc)
         @admin = Admin.order(:email)
+        @ratings = Rating.order(:created_at)
         
     end
 
