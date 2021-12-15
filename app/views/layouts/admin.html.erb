@@ -15,6 +15,8 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
     <!-- Font Awesome Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     
   </head>
@@ -30,36 +32,48 @@
         <hr class="horizontal light mt-0 mb-2">
         <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link text-dark " href="/">
-                <span class="nav-link-text ms-1">Home</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark <%= controller_name == 'categories' ? 'active bg-gradient-dark' : '' %>  " href="/categories">
-                <span class="nav-link-text ms-1">Categorias</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark <%= controller_name == 'roles' ? 'active bg-gradient-dark' : '' %>  " href="/roles">
-                <span class="nav-link-text ms-1">Cargos</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark <%= controller_name == 'posts' ? 'active bg-gradient-dark' : '' %>  " href="/posts">
-                <span class="nav-link-text ms-1">Posts</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark <%= controller_name == 'comments' ? 'active bg-gradient-dark' : '' %>  " href="/comments">
-                <span class="nav-link-text ms-1">Comentarios</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark <%= controller_name == 'admins' ? 'active bg-gradient-dark' : '' %>  " href="/admins">
-                <span class="nav-link-text ms-1">User</span>
-              </a>
-            </li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <li class="nav-item">
+                  <a class="nav-link text-dark " href="/">
+                    <span class="nav-link-text ms-1">Home</span>
+                  </a>
+                </li>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <li class="nav-item">
+                <a class="nav-link text-dark <%= controller_name == 'categories' ? 'active bg-gradient-dark' : '' %>  " href="/categories">
+                  <span class="nav-link-text ms-1">Categorias</span>
+                </a>
+              </li>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <li class="nav-item">
+                <a class="nav-link text-dark <%= controller_name == 'roles' ? 'active bg-gradient-dark' : '' %>  " href="/roles">
+                  <span class="nav-link-text ms-1">Cargos</span>
+                </a>
+              </li>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <li class="nav-item">
+                <a class="nav-link text-dark <%= controller_name == 'posts' ? 'active bg-gradient-dark' : '' %>  " href="/posts">
+                  <span class="nav-link-text ms-1">Posts</span>
+                </a>
+              </li>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <li class="nav-item">
+                <a class="nav-link text-dark <%= controller_name == 'comments' ? 'active bg-gradient-dark' : '' %>  " href="/comments">
+                  <span class="nav-link-text ms-1">Comentarios</span>
+                </a>
+              </li>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <li class="nav-item">
+                <a class="nav-link text-dark <%= controller_name == 'admins' ? 'active bg-gradient-dark' : '' %>  " href="/admins">
+                  <span class="nav-link-text ms-1">User</span>
+                </a>
+              </li>
+            </div>
             <li class="nav-item container">
             <hr>
               <div class="text-dark">
@@ -85,4 +99,36 @@
       </div>
     <%= yield %>
   </body>
- </html>
+  <script>
+  // Toggle Sidenav
+  const iconNavbarSidenav = document.getElementById('iconNavbarSidenav');
+  const iconSidenav = document.getElementById('iconSidenav');
+  const sidenav = document.getElementById('sidenav-main');
+  let body = document.getElementsByTagName('body')[0];
+  let className = 'g-sidenav-pinned';
+
+  if (iconNavbarSidenav) {
+    iconNavbarSidenav.addEventListener("click", toggleSidenav);
+  }
+
+  if (iconSidenav) {
+    iconSidenav.addEventListener("click", toggleSidenav);
+  }
+
+  function toggleSidenav() {
+    if (body.classList.contains(className)) {
+      body.classList.remove(className);
+      setTimeout(function() {
+        sidenav.classList.remove('bg-white');
+      }, 100);
+      sidenav.classList.remove('bg-transparent');
+
+    } else {
+      body.classList.add(className);
+      sidenav.classList.add('bg-white');
+      sidenav.classList.remove('bg-transparent');
+      iconSidenav.classList.remove('d-none');
+    }
+  }
+  </script>
+</html>
