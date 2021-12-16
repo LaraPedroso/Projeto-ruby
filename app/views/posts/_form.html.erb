@@ -1,7 +1,7 @@
 <div class=" bg-light">
     <%= form_with model: @post do |form| %>
         <div class="input-group input-group-outline mb-3">
-            <p class="text-rose m-2 font-weight-bold">  Categorias: </p>
+            <p class="text-dark m-2 font-weight-bold">  Categorias: </p>
             <label class="form-label"></label>
             <ul>
             <% @categories.each do |category|  %>
@@ -15,16 +15,16 @@
         </div>
 
         <div class="input-group input-group-outline mb-5 w-80 mx-3">
-            <label>Nome</label>
+            <label class="form-label">Nome</label>
             <%= form.text_field :name, maxlength:15, class: "form-control", :required => true%>
         </div>
         <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
-            <label> Resumo </label>
+            <label class="form-label"> Resumo </label>
             <%= form.text_area :summary, maxlength: 50, class: "form-control p-3 mb-2", size: "30x5", :required => true  %>
         </div>
 
         <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
-            <label> Descrição </label>
+            <label class="form-label"> Descrição </label>
             <%= form.text_area :content, maxlength: 3000, class: "form-control p-3 mb-2", size: "60x10", :required => true %>
         </div>
 

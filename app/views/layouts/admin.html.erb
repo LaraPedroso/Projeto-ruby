@@ -9,7 +9,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
     
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--     Fonts and icons     -->
@@ -21,114 +23,94 @@
     
   </head>
 
-  <body class="g-sidenav-show  bg-gray-200">
-    <aside style="height: 100%;">
-      <aside class="sidenav navbar navbar-vertical fonts-L navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-light bg-white" id="sidenav-main">
-        <div class="sidenav-header">
-          <a class="navbar-brand m-0">
-            <span class="ms-1 font-weight-bold text-dark">Blog</span>
-          </a>
-        </div>
-        <hr class="horizontal light mt-0 mb-2">
-        <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
-          <ul class="navbar-nav">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <li class="nav-item">
-                  <a class="nav-link text-dark " href="/">
-                    <span class="nav-link-text ms-1">Home</span>
-                  </a>
-                </li>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <li class="nav-item">
-                <a class="nav-link text-dark <%= controller_name == 'categories' ? 'active bg-gradient-dark' : '' %>  " href="/categories">
-                  <span class="nav-link-text ms-1">Categorias</span>
-                </a>
-              </li>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <li class="nav-item">
-                <a class="nav-link text-dark <%= controller_name == 'roles' ? 'active bg-gradient-dark' : '' %>  " href="/roles">
-                  <span class="nav-link-text ms-1">Cargos</span>
-                </a>
-              </li>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <li class="nav-item">
-                <a class="nav-link text-dark <%= controller_name == 'posts' ? 'active bg-gradient-dark' : '' %>  " href="/posts">
-                  <span class="nav-link-text ms-1">Posts</span>
-                </a>
-              </li>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <li class="nav-item">
-                <a class="nav-link text-dark <%= controller_name == 'comments' ? 'active bg-gradient-dark' : '' %>  " href="/comments">
-                  <span class="nav-link-text ms-1">Comentarios</span>
-                </a>
-              </li>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <li class="nav-item">
-                <a class="nav-link text-dark <%= controller_name == 'admins' ? 'active bg-gradient-dark' : '' %>  " href="/admins">
-                  <span class="nav-link-text ms-1">User</span>
-                </a>
-              </li>
-            </div>
-            <li class="nav-item container">
-            <hr>
-              <div class="text-dark">
-                Logado: <strong><%= current_admin.email %></strong>.
-              </div>
-              <li class="nav-item container">
-                  <%= link_to 'Editar perfil', edit_admin_registration_path, :class => 'text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2 navbar-link' %>
-              </li>
-                <li class="nav-item container">
-                  <%= link_to "Sair", destroy_admin_session_path, method: :delete, :class => 'text-dark btn btn btn-outline-dark text-xs m-2 navbar-link'  %>
-              </li>
+<body class="g-sidenav-show corpo">
+  <aside class="sidenav navbar navbar-vertical fonts-L navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-light bg-white" id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0">
+        <span class="ms-1 font-weight-bold text-dark">Blog</span>
+      </a>
+    </div>
+    <hr class="horizontal light mt-0 mb-2">
+    <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <li class="nav-item">
+              <a class="nav-link text-dark " href="/">
+                <span class="nav-link-text ms-1">Home</span>
+              </a>
             </li>
-          </ul>
         </div>
-    </aside>
-      <div class="mt-7 container">
-          <% if notice %>
-            <p class="alert alert-success text-white"><%= notice %></p>
-          <% end %>
-          <% if alert %>
-            <p class="alert alert-danger text-white"><%= alert %></p>
-          <% end %>
-      </div>
-    <%= yield %>
-  </body>
-  <script>
-  // Toggle Sidenav
-  const iconNavbarSidenav = document.getElementById('iconNavbarSidenav');
-  const iconSidenav = document.getElementById('iconSidenav');
-  const sidenav = document.getElementById('sidenav-main');
-  let body = document.getElementsByTagName('body')[0];
-  let className = 'g-sidenav-pinned';
-
-  if (iconNavbarSidenav) {
-    iconNavbarSidenav.addEventListener("click", toggleSidenav);
-  }
-
-  if (iconSidenav) {
-    iconSidenav.addEventListener("click", toggleSidenav);
-  }
-
-  function toggleSidenav() {
-    if (body.classList.contains(className)) {
-      body.classList.remove(className);
-      setTimeout(function() {
-        sidenav.classList.remove('bg-white');
-      }, 100);
-      sidenav.classList.remove('bg-transparent');
-
-    } else {
-      body.classList.add(className);
-      sidenav.classList.add('bg-white');
-      sidenav.classList.remove('bg-transparent');
-      iconSidenav.classList.remove('d-none');
-    }
-  }
-  </script>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <li class="nav-item">
+            <a class="nav-link text-dark <%= controller_name == 'categories' ? 'active bg-gradient-dark' : '' %>  " href="/categories">
+              <span class="nav-link-text ms-1">Categorias</span>
+            </a>
+          </li>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <li class="nav-item">
+            <a class="nav-link text-dark <%= controller_name == 'roles' ? 'active bg-gradient-dark' : '' %>  " href="/roles">
+              <span class="nav-link-text ms-1">Cargos</span>
+            </a>
+          </li>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <li class="nav-item">
+            <a class="nav-link text-dark <%= controller_name == 'posts' ? 'active bg-gradient-dark' : '' %>  " href="/posts">
+              <span class="nav-link-text ms-1">Posts</span>
+            </a>
+          </li>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <li class="nav-item">
+            <a class="nav-link text-dark <%= controller_name == 'comments' ? 'active bg-gradient-dark' : '' %>  " href="/comments">
+              <span class="nav-link-text ms-1">Comentarios</span>
+            </a>
+          </li>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <li class="nav-item">
+            <a class="nav-link text-dark <%= controller_name == 'admins' ? 'active bg-gradient-dark' : '' %>  " href="/admins">
+              <span class="nav-link-text ms-1">User</span>
+            </a>
+          </li>
+        </div>
+        <li class="nav-item container">
+        <hr>
+          <div class="text-dark">
+            Logado: <strong><%= current_admin.email %></strong>.
+          </div>
+          <li class="nav-item container">
+              <%= link_to 'Editar perfil', edit_admin_registration_path, :class => 'text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2 navbar-link' %>
+          </li>
+            <li class="nav-item container">
+              <%= link_to "Sair", destroy_admin_session_path, method: :delete, :class => 'text-dark btn btn btn-outline-dark text-xs m-2 navbar-link'  %>
+          </li>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+  <div class="container">
+    <div class="nav-item d-xl-none ps-3 d-flex justify-content-end">
+      <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+        <div class="sidenav-toggler-inner">
+          <i class="fa fa-bars mt-5"></i>
+        </div>
+      </a>
+    </div>
+  </div>
+    <div class="mt-7 container">
+        <% if notice %>
+          <p class="alert alert-success text-white"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger text-white"><%= alert %></p>
+        <% end %>
+    </div>
+  <%= yield %>
+  </main>
+</body>
+  
 </html>

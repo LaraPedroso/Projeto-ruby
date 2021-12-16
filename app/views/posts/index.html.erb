@@ -1,7 +1,7 @@
-<div class="container py-4">
+<div class="container ">
     <div class="row">
         <div class="col-12">
-            <div class="card my-4">
+            <div class="card my-2 px-3 border-5">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class=" shadow-dark border-radius-lg pt-4 pb-3 border border-dark border-2">
                     <div class="container ">
@@ -18,11 +18,13 @@
                         <table class="table align-items-center mb-0">
                             <thead>
                             <tr>
-                                <th class="fonts-L">Nome</th>
-                                <th class="text-secondary opacity-5"></th>
-                                <th class="fonts-L">Imagem</th>
-                                <th class="text-secondary opacity-5"></th>
-                                <th class="fonts-L me-3">Avaliação Média</th>
+                                <th class="fonts-L ">Nome</th>
+                                <th class="fonts-L ">Imagem</th>
+                                <th class="text-center"> 
+                                <i class="fas fa-star fa-1x red"></i>
+                                <i class="fas fa-star fa-1x orange"></i>
+                                <i class="fas fa-star fa-1x yellow"></i>
+                                </th>
                                 
                             </tr>
                             </thead>
@@ -33,15 +35,14 @@
                                     <p class="fonts-L"><%= post.name %></p>
                                     </td>
                                     <td>
-                                        <%= image_tag post.image.variant(resize_to_limit: [100, 100]) %>
+                                        <%= image_tag post.image.variant(resize_to_limit: [100, 100]), class:"img-fluid"%>
                                     </td>
-                                    <td class="align-middle">
-                                    <%= link_to 'Editar', edit_post_path(id: post.id), class: "btn btn-sm text-secondary font-weight-bold" %>
-                                    <%= link_to 'Deletar', post_path(id: post.id), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-sm text-white bg-primary font-weight-bold" %>
-                                    </td>
-                                    
-                                    <td class="mx-3">
+                                    <td class="text-center">
                                     <%= number_with_precision(post.media, precision: 1) %>
+                                    </td>
+                                    <td class="align-middle mx-3">
+                                    <%= link_to 'Editar', edit_post_path(id: post.id), class: "btn btn-sm text-secondary font-weight-bold" %>
+                                    <%= link_to 'Deletar', post_path(id: post.id), method: :destroy, data: { confirm: "Tem certeza?" }, class: "text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold" %>
                                     </td>
                                 </tr>
                                 <% end %>

@@ -65,7 +65,6 @@ class PostsController < ApplicationController
 
     def destroy
         @post = Post.find(params[:id])
-        @admin = Admin.order(:email)
         
         if @post.present?
             @post.destroy 
