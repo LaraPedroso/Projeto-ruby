@@ -1,13 +1,13 @@
-<div class="container py-4 ">
-    <div class="row align-self-center">
+<div class="container  py-4 ">
+  <div class="row align-self-center">
     <div class="col-4">
-        <div class="card my-4">
+      <div class="card my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-            <div class=" shadow-dark border-radius-lg pt-4 pb-3 border border-dark border-1">
-            <div class="container ">
-            <h2 class="text-dark ps-3 text-monospace ">Esqueceu a senha?</h2>
-            </div>
+          <div class=" shadow-dark border-radius-lg pt-4 pb-3 border border-dark border-1">
+          <div class="container ">
+          <h2 class="text-dark ps-3 text-monospace ">Esqueceu a senha?</h2>
           </div>
+        </div>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "admins/shared/error_messages", resource: resource %>
@@ -23,5 +23,5 @@
 <% end %>
 <div class = "mt-2">
 <%= render "admins/shared/links" %>
-  </div>
+</div>
 

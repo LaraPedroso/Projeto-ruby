@@ -8,7 +8,7 @@
               </div>
             </div>
             <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
-              <div class="card card-plain">
+              <div class="card card-plain bg-gradient-light ">
                 <div class="card-header">
                   <h4 class="font-weight-bolder">Editar</h4>
                 </div>
@@ -17,7 +17,7 @@
                   <%= render "admins/shared/error_messages", resource: resource %>
 
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label"></label>
+                      <label class="form-label">Email</label>
                       <%= f.email_field :email,class:"form-control", autofocus: true, autocomplete: "email", :required => true%>
                     </div>
 
@@ -36,19 +36,19 @@
 
                     <div class="input-group input-group-outline mb-3">
                       <label class="form-label">Senha atual</label>
-                      <%= f.password_field :current_password,class:"form-control", autocomplete: "current-password" %>
+                      <%= f.password_field :current_password, class:"form-control" %>
                     </div>
                   
-                    <div class="actions mt-5">
+                    <div class="actions mt-2">
                       <%= f.submit "Atualizar",  class: "btn btn-outline-dark"%>
                     </div>
                 </div>
 
-                <div class="btn btn-outline-dark mt-4 m-3">
+                <div class="btn btn-outline-dark m-3  ">
                   <%= link_to "Voltar", :back %>
                 </div>
                 <% end %>
-                <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete %>
+                <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, class:"btn btn-outline-dark m-3 mt-1" %>
               </div>
             </div>
           </div>

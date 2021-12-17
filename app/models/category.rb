@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-    has_many :post_cats
+    has_many :post_cats, dependent: :delete_all
 
     validates_presence_of :name
     validates_presence_of :description

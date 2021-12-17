@@ -20,7 +20,7 @@
         </div>
         <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
             <label class="form-label"> Resumo </label>
-            <%= form.text_area :summary, maxlength: 50, class: "form-control p-3 mb-2", size: "30x5", :required => true  %>
+            <%= form.text_area :summary, maxlength: 50, class: "form-control", size: "30x5", :required => true  %>
         </div>
 
         <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
@@ -33,8 +33,8 @@
         </div>
 
         <div class="text-center">
-            <%= form.submit 'Salvar', class: "btn btn-outline-dark btn-lg w-100 mt-4 mb-0" %>
-            <%= link_to 'Cancelar', posts_path, class: "btn btn-outline-dark btn-lg w-100 mt-4 mb-0" %>
+            <%= form.submit 'Salvar', class: "btn btn-outline-dark btn-lg w-50 mt-4 mb-0" %>
+            <%= link_to 'Cancelar', posts_path, class: "btn btn-outline-dark btn-lg w-50 mt-4 mb-5" %>
         </div>
     <% end %>
 </div>

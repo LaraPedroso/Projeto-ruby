@@ -1,25 +1,25 @@
 <div class="container mt-10 ">
-    <div class="card fill mb-10 z-index-2 bg-gradient-light">
-        <div class="card-header img-fluid shadow-dark border-radius-lg page-header p-0 position-relative mt-n4 mx-5 z-index-2 bg-transparent" style="width:1010px; height:400px;">
-            <%= image_tag @post.image.variant(saver: { quality: 10 }, resize_to_fill: [1010, 400]) %>
+    <div class="card fill mb-10 z-index-2 bg-gradient-light border-dark border-3">
+        <div class="responsive-1 shadow-dark border-radius-xl page-header p-0 mt-n5 mx-4 z-index-10 bg-transparent img-fluid">
+            <%= image_tag @post.image.variant(saver: { quality: 10 }, resize_to_fill: [1500, 400]) %>
         </div>
                 <div class="card-body container text-dark py-1 px-3">
                     <div class="my-5" style="width: 95%; text-align: center;">
                         <h2 class="card-text text-dark my-3 fonts-L"><%= @post.name%></h2>
                     </div>
-                    <div class="container px-8 mb-7">
+                    <div class="container">
                         <p class="card-text" style="font-size: 15px; fonts-L"><%= @post.content %>.</p>
                     </div>
                     </div>
                 <div>
-                    <table class="table bg-gradient- border-radius-lg align-items-center mb-5">
+                    <table class="table border-radius-lg align-items-center mb-5">
                         <% if can? :create, Comment%>
                             <thead>
                             <%= form_with model: @comment, local: false, :html => {:id =>'comment-form' } do |form| %>
                                 <tr>
                                     <th class="text-dark font-weight-bolder form-control">
                                         <%= form.text_area :content, maxlength: 255, class: "bg-light form-control p-2", placeholder: "Escreva seu Comentario..."%>
-                                        <%= form.submit 'Enviar', class: "fonts-L btn btn-lg bg-gradient-dark btn-lg mt-4" %>
+                                        <%= form.submit 'Enviar', class: "fonts-L btn btn-lg text-dark btn btn btn-outline-dark btn-lg mt-4" %>
                                         <%= form.hidden_field :post_id, :value => @post.id %>
                                     </th>
                                 </tr>
@@ -35,7 +35,7 @@
                     </div>
                 </div>  
             <div class="container">
-                <%= link_to 'Voltar', root_path, class: " fonts-L btn btn-outline-dark font-weight-bold mt-5 mb-4" %>
+                <%= link_to 'Voltar', root_path, class: "fonts-L btn btn-lg text-dark btn btn btn-outline-dark  L-black font-weight-bold mt-5 mb-4" %>
             </div>
         </div>
     </div>

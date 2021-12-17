@@ -56,3 +56,21 @@ background: linear-gradient(to right, #556270, #4ECDC4); /* W3C, IE 10+/ Edge, F
 .red{
   color:#FF8C00;
 }
+
+.L-black {
+  color: #000;
+}
+
+
+.borda{
+
+  border-color: #000;
+}
+
+.cursor:hover {
+  color: white;
+}
+
+.card-black {
+  background-color: #000;
+}

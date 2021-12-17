@@ -807,3 +807,39 @@ function darkMode(el) {
     el.removeAttribute("checked");
   }
 };
+
+$('#1').click(function(){
+  $('#1').css("color", "yellow");
+  $('#2').css("color", "gray");
+  $('#3').css("color", "gray");
+  $('#4').css("color", "gray");
+  $('#5').css("color", "gray");   
+})
+$('#2').click(function(){
+  $('#1').css("color", "yellow");
+  $('#2').css("color", "yellow");
+  $('#3').css("color", "gray");
+  $('#4').css("color", "gray");
+  $('#5').css("color", "gray");
+})
+$('#3').click(function(){
+  $('#1').css("color", "yellow");
+  $('#2').css("color", "yellow");
+  $('#3').css("color", "yellow");
+  $('#4').css("color", "gray");
+  $('#5').css("color", "gray");
+})
+$('#4').click(function(){
+  $('#1').css("color", "yellow");
+  $('#2').css("color", "yellow");
+  $('#3').css("color", "yellow");
+  $('#4').css("color", "yellow");
+  $('#5').css("color", "gray");
+})
+$('#5').click(function(){
+  $('#1').css("color", "yellow");
+  $('#2').css("color", "yellow");
+  $('#3').css("color", "yellow");
+  $('#4').css("color", "yellow");
+  $('#5').css("color", "yellow");
+})

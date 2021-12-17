@@ -1,6 +1,6 @@
 <div class="container">
     <h3 class="text-dark my-3 fonts-L">AVALIAÇÃO
-            <i class="fas fa-star fa-1x mt-3" style="color: #FFFF00;"></i>
+        <i class="fas fa-star fa-1x mt-3" style="color: #FFFF00;"></i>
     </h3>
     <%= form_with model: @ratings, local: false do |f| %>
         <% (1..5).each do |rating| %>
@@ -14,44 +14,6 @@
         <span id="rating-post">
             <%= number_with_precision(@average, precision: 1) %>
         </span>
-        <%= f.submit ('Avaliar'), class: "btn btn-lg bg-gradient-dark fonts-L mt-2 mb-0 m-4"%> 
+        <%= f.submit ('Avaliar'), class: "btn btn-lg text-dark btn btn btn-outline-dark fonts-L mt-2 mb-0 m-4"%> 
     <% end %>
 </div>
-
-<script>
-    $('#1').click(function(){
-        $('#1').css("color", "yellow");
-        $('#2').css("color", "gray");
-        $('#3').css("color", "gray");
-        $('#4').css("color", "gray");
-        $('#5').css("color", "gray");   
-    })
-    $('#2').click(function(){
-        $('#1').css("color", "yellow");
-        $('#2').css("color", "yellow");
-        $('#3').css("color", "gray");
-        $('#4').css("color", "gray");
-        $('#5').css("color", "gray");
-    })
-    $('#3').click(function(){
-        $('#1').css("color", "yellow");
-        $('#2').css("color", "yellow");
-        $('#3').css("color", "yellow");
-        $('#4').css("color", "gray");
-        $('#5').css("color", "gray");
-    })
-    $('#4').click(function(){
-        $('#1').css("color", "yellow");
-        $('#2').css("color", "yellow");
-        $('#3').css("color", "yellow");
-        $('#4').css("color", "yellow");
-        $('#5').css("color", "gray");
-    })
-    $('#5').click(function(){
-        $('#1').css("color", "yellow");
-        $('#2').css("color", "yellow");
-        $('#3').css("color", "yellow");
-        $('#4').css("color", "yellow");
-        $('#5').css("color", "yellow");
-    })
-</script>
