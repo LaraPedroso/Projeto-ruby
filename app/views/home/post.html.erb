@@ -13,13 +13,13 @@
                     </div>
                 <div>
                     <table class="table border-radius-lg align-items-center mb-5">
-                        <% if can? :create, Comment%>
+                        <% if current_admin %>
                             <thead>
                             <%= form_with model: @comment, local: false, :html => {:id =>'comment-form' } do |form| %>
                                 <tr>
                                     <th class="text-dark font-weight-bolder form-control">
                                         <%= form.text_area :content, maxlength: 255, class: "bg-light form-control p-2", placeholder: "Escreva seu Comentario..."%>
-                                        <%= form.submit 'Enviar', class: "fonts-L btn btn-lg text-dark btn btn btn-outline-dark btn-lg mt-4" %>
+                                        <%= form.submit 'Enviar', class: "text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2" %>
                                         <%= form.hidden_field :post_id, :value => @post.id %>
                                     </th>
                                 </tr>

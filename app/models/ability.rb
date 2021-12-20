@@ -6,6 +6,10 @@ class Ability
   def initialize(admin) #admin -> (USER), adminn -> (Admin)
     if admin.adminn?
       can :manage, :all
+    elsif admin.comentarista?
+      can :create, Comment
+    else 
+      can :read, :all
     end
   end
 end

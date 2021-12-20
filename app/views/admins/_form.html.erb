@@ -1,31 +1,31 @@
 
-<div class=" bg-light mt-5">
+<div class="bg-light">
     <%= form_with model: @admin do |form| %>
-        <div class="input-group input-group-outline mb-5 w-80 mx-3">
+        <div class="input-group input-group-outline mb-5 w-80 mx-3 pt-5 mx-5">
             <%= form.text_field :email, class: "form-control", placeholder: 'Email', :required => true%>
         </div>
 
-        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
+        <div class="input-group input-group-outline mb-5 mx-3 w-80 mx-5">
             <%= form.password_field :password, maxlength: 15, placeholder: 'Senha',disabled: true, class: "form-control p-3 mb-2" %>
         </div>
 
-        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
+        <div class="input-group input-group-outline mb-5 mx-3 w-80 mx-5">
             <%= form.password_field :password_confirmation, placeholder: 'Confirmar senha', disabled: true, class: "form-control p-3 mb-2" %>  
         </div>
 
-        <div class="bg-light mb-3">
+        <div class="bg-light mb-3 mx-5">
             <input type="checkbox" id="pass" name="pass">
             <label for="pass">alterar senha?</label>
         </div>
-        <div class="input-group input-group-outline mb-3 form-control">
+        <div class="input-group input-group-outline mb-3 form-control mx-5">
             <%= form.select :role_id, options_for_select([
             ['Admin', 1], 
             ['Comentarista', 2], 
             ['Leitor', 3]], @admin.role_id) %>
         </div>
         <div class="container">
-            <%= form.submit 'Salvar', class: "fonts-L btn btn-outline-dark font-weight-bold mt-5 mb-4" %>
-            <%= link_to 'Voltar', admins_path, class: "fonts-L btn btn-outline-dark font-weight-bold mt-5 mb-4" %>
+            <%= form.submit 'Salvar', class: "btn btn-lg text-white bg-gradient-dark font-weight-bold mb-5" %>
+            <%= link_to 'Voltar', admins_path, class: "btn btn-lg text-white bg-gradient-dark font-weight-bold mb-5" %>
         </div>
     <% end %>
 </div>

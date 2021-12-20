@@ -1,12 +1,12 @@
-<div class="card-body bg-light border-radius-lg">
+<div class="card-body bg-light">
     <%= form_with model: @role do |form| %>
-        <div class="input-group input-group-outline mb-3">
-            <label>Name</label>
+        <div class="input-group input-group-outline mb-3 pt-4">
+            <label class="p-2">Name</label>
             <%= form.text_field :username, class: "form-control" %>
         </div>
-        <div class="text-center">
-            <%= form.submit 'Salvar',  class: "btn btn-outline-dark btn-lg w-100 mt-4 mb-0" %>
-            <%= link_to 'Cancelar', roles_path, class: "btn btn-outline-dark btn-lg w-100 mt-4 mb-0" %>
+        <div>
+            <%= form.submit 'Salvar',  class: "text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2" %>
+            <%= link_to 'Cancelar', roles_path, class: "text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2" %>
         </div>
     <% end %>
 </div>

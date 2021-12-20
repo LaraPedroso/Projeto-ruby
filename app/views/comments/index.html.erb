@@ -10,24 +10,24 @@
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
-                                <table class="table bg-gradient-light border-radius-lg align-items-center mb-8">
+                                <table class="table bg-gradient-light border-radius-lg align-items-center mb-5  justify-content-end">
                                     <% @comments.each do |comment| %>
                                         <tr class="container">
                                         <td>
                                             <p class="font-weight-bold mb-0"><%= comment.content %></p>
                                         </td>
-                                        <td class="align-middle">
-                                            <%= button_to 'Deletar', comment_path(id: comment.id), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-sm text-white bg-dark font-weight-bold" %>
+                                        <td>
+                                            <%= button_to 'Deletar', comment_path(id: comment.id), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-sm text-white bg-gradient-dark font-weight-bold" %>
                                         </td>
                                         </tr>
                                     <% end %>
                                 </table>
-                                <div>
-                                    <%= link_to 'Voltar', root_path, class: "btn btn-outline-dark font-weight-bold" %>
-                                </div>
                             </div>
                         </div>
                     </div>
+                                <div>
+                                    <%= link_to 'Voltar', root_path, class: "btn btn-outline-dark font-weight-bold" %>
+                                </div>
                 </div>
             </div>
         </div>

@@ -11,6 +11,9 @@ devise  :database_authenticatable, :registerable,
 
     def adminn?
       role_id == 1
-    end
 
+    end
+    def comentarista?
+      role_id == 2
+    end
 end

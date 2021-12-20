@@ -1,30 +1,27 @@
-<div class=" bg-light">
+<div class=" bg-light container">
     <%= form_with model: @post do |form| %>
-        <div class="input-group input-group-outline mb-3">
-            <p class="text-dark m-2 font-weight-bold">  Categorias: </p>
+        <div class="input-group input-group-outline mb-5 pt-3">
+            <p class="text-dark m-2 font-weight-bold opacity-6">  Categorias: </p>
             <label class="form-label"></label>
             <ul>
             <% @categories.each do |category|  %>
-                <li>
                     <%= check_box_tag 'category_ids[]', category.id, @post_cats.filter {|a| a.category_id == category.id}.present? -%>
                     <%= h category.name -%>
-                    
-                </li>
             <% end %>
             </ul>
         </div>
-
-        <div class="input-group input-group-outline mb-5 w-80 mx-3">
-            <label class="form-label">Nome</label>
+        <hr >
+        <div class="input-group input-group-outline mb-5 w-80 mx-3 pt-3">
+            <label class="mx-3">Nome</label>
             <%= form.text_field :name, maxlength:15, class: "form-control", :required => true%>
         </div>
         <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
-            <label class="form-label"> Resumo </label>
+            <label class="mx-3"> Resumo </label>
             <%= form.text_area :summary, maxlength: 50, class: "form-control", size: "30x5", :required => true  %>
         </div>
 
         <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
-            <label class="form-label"> Descrição </label>
+            <label class="mx-3"> Descrição </label>
             <%= form.text_area :content, maxlength: 3000, class: "form-control p-3 mb-2", size: "60x10", :required => true %>
         </div>
 
@@ -32,9 +29,9 @@
             <%= form.file_field :image%>
         </div>
 
-        <div class="text-center">
-            <%= form.submit 'Salvar', class: "btn btn-outline-dark btn-lg w-50 mt-4 mb-0" %>
-            <%= link_to 'Cancelar', posts_path, class: "btn btn-outline-dark btn-lg w-50 mt-4 mb-5" %>
+        <div class="">
+            <%= form.submit 'Salvar', class: "btn btn-lg text-white bg-gradient-dark font-weight-bold m-3" %>
+            <%= link_to 'Cancelar', posts_path, class: "btn btn-lg text-white bg-gradient-dark font-weight-bold m-3 " %>
         </div>
     <% end %>
 </div>

@@ -1,8 +1,31 @@
-<div>
     <div class="container">
         <div class="card-header">
             <h2 class="fonts-L">User</h4>
+            <p class="mb-0 fonts-L">Novo User</p>
         </div>
-        <%= render partial: 'form' %>
+        <div class=" bg-light">
+    <%= form_with model: @admin do |form| %>
+        <div class="input-group input-group-outline mb-5 w-80 mx-3 pt-5">
+            <%= form.text_field :email, class: "form-control", placeholder: 'Email', :required => true%>
+        </div>
+
+        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
+            <%= form.password_field :password, maxlength: 15, placeholder: 'Senha', class: "form-control p-3 mb-2" %>
+        </div>
+
+        <div class="input-group input-group-outline mb-5 mx-3 w-80 ">
+            <%= form.password_field :password_confirmation, placeholder: 'Confirmar senha',  class: "form-control p-3 mb-2" %>  
+        </div>
+        <div class="input-group input-group-outline mb-3 mx-4">
+            <%= form.select :role_id, options_for_select([
+            ['Admin', 1], 
+            ['Comentarista', 2], 
+            ['Leitor', 3]], @admin.role_id)%>
+        </div>
+        <div class="container">
+            <%= form.submit 'Salvar', class: "text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2 mb-5 mt-5" %>
+            <%= link_to 'Voltar', admins_path, class: "text-white btn btn btn-outline-dark bg-gradient-dark font-weight-bold text-xs m-2 mb-5 mt-5" %>
+        </div>
+    <% end %>
     </div>
 </div>
