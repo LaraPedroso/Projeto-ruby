@@ -4,7 +4,7 @@
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 ">
                 <div class=" shadow-dark border-radius-lg pt-4 pb-3 border border-dark border-2">
                     <div class="container ">
-                        <h2 class="text-dark ps-3 text-monospace">Categorias</h2>
+                        <h2 class="ps-3 text-monospace text-black">Categorias</h2>
                         <%= link_to new_category_path, class: "btn btn-outline-dark" do %>
                             <i class="fas fa-plus"></i>
                         <% end %>
@@ -24,7 +24,7 @@
                         <% @categories.each do |category| %>
                             <tr>
                             <td>
-                                <h4 class="text-monospace mb-0"><%= category.name %></h4>
+                                <h4 class="text-monospace mb-0 text-black"><%= category.name %></h4>
                             </td>
                             <td class="align-middle">
                                 <%= link_to 'Editar' , edit_category_path(id: category.id), class: "btn btn-outline-dark" %>

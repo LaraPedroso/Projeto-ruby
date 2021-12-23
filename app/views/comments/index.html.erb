@@ -5,14 +5,14 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class=" shadow-dark border-radius-lg pt-4 pb-3 border border-dark border-2">
                     <div class="container ">
-                    <h2 class="text-dark ps-3 text-monospace">Comentarios</h2>
+                    <h2 class="text-black ps-3 text-monospace">Comentarios</h2>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
-                                <table class="table bg-gradient-light border-radius-lg align-items-center mb-5  justify-content-end">
+                                <table class="table bg-gradient-light border-radius-lg align-items-center mb-5 justify-content-end">
                                     <% @comments.each do |comment| %>
-                                        <tr class="container">
+                                        <tr class="container text-black">
                                         <td>
                                             <p class="font-weight-bold mb-0"><%= comment.content %></p>
                                         </td>

@@ -5,7 +5,7 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class=" shadow-dark border-radius-lg pt-4 pb-3 border border-dark border-2">
                     <div class="container ">
-                    <h2 class="text-dark ps-3 fonts-L">Posts</h2>
+                    <h2 class="text-black ps-3 fonts-L">Posts</h2>
                     <%= link_to new_post_path, class: "btn btn-outline-dark" do %>
                         novo
                         <i class="fas fa-plus"></i>
@@ -18,8 +18,8 @@
                         <table class="table align-items-center mb-0">
                             <thead>
                             <tr>
-                                <th class="fonts-L ">Nome</th>
-                                <th class="fonts-L ">Imagem</th>
+                                <th class="text-black">Nome</th>
+                                <th class="text-black">Imagem</th>
                                 <th class="text-center"> 
                                 <i class="fas fa-star fa-1x red"></i>
                                 <i class="fas fa-star fa-1x orange"></i>
@@ -30,9 +30,9 @@
                             </thead>
                             <tbody>
                         <% @posts.each do |post| %>
-                                <tr class="container">
+                                <tr class="container text-black">
                                     <td>
-                                    <p class="fonts-L"><%= post.name %></p>
+                                    <p><%= post.name %></p>
                                     </td>
                                     <td>
                                         <%= image_tag post.image.variant(resize_to_limit: [100, 100]), class:"img-fluid"%>
